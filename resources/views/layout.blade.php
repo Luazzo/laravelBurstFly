@@ -2,7 +2,7 @@
 <html>
 
 <head>
-
+    <!--Head-->
     @include('partials.head')
 
 </head>

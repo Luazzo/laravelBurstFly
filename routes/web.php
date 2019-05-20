@@ -15,9 +15,7 @@
 */
 
 //index
-Route::get('/', function () {
-    $posts = Post::all();
-    return view('post/index', compact('posts'));})->name('index');
+Route::get('/','PostController@index')->name('index'); //OU COMME çA: Route::get('/categories/{slug}', ['as'=>'category.posts', 'uses'=> 'PostController@show']);
 
 //category.posts
 Route::get('/categories/{slug}','PostController@show')->name('category.posts'); //OU COMME çA: Route::get('/categories/{slug}', ['as'=>'category.posts', 'uses'=> 'PostController@show']);

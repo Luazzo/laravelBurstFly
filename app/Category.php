@@ -3,12 +3,9 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use \TCG\Voyager\Models\Category as ctg;
 
-/**
- * Class Category
- * @package App
- */
-class Category extends \TCG\Voyager\Models\Category
+class Category extends ctg
 {
     //
 }

@@ -48,4 +48,4 @@
             <div class="thank-text">pl<span style="letter-spacing:-5px;">a</span>tz</div>
         </div>
     </div>
-@endsection
+@stop

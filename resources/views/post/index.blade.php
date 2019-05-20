@@ -17,7 +17,7 @@
                             </dl>
                         </a>
                         <div id="wrapper-part-info">
-                            <div class="part-info-image"><img src="{{ Voyager::image( $post->category()->first()->image ) }}" alt="" width="28" height="28"/></div>
+                            <div class="part-info-image"><img src="{{ Voyager::image( $post->ctgimage ) }}" alt="" width="28" height="28"/></div>
                             <div id="part-info">{{$post->title}}</div>
                         </div>
                     </figure>
@@ -48,4 +48,4 @@
             <div class="thank-text">pl<span style="letter-spacing:-5px;">a</span>tz</div>
         </div>
     </div>
-@stop
+@endsection

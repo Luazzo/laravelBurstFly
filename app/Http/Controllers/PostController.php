@@ -7,8 +7,16 @@
 	use Illuminate\Support\Facades\DB;
 	
 	
+	/**
+	 * Class PostController
+	 * @package App\Http\Controllers
+	 */
 	class PostController extends Controller
 	{
+		/**
+		 * @param $slug
+		 * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+		 */
 		public static function show($slug)
 		{
 			$posts = Post::where('categories.slug','=', $slug)

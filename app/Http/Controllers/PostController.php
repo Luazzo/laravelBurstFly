@@ -14,6 +14,7 @@
 	class PostController extends Controller
 	{
 		/**
+		 * Affichage des posts d'une categorie
 		 * @param $slug
 		 * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
 		 */

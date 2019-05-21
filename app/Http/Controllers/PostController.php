@@ -3,6 +3,7 @@
 	namespace App\Http\Controllers;
 	
 	use App\Post;
+	use App\Category;
 	use Illuminate\Http\Request;
 	use Illuminate\Support\Facades\DB;
 	
@@ -32,10 +33,14 @@
 		 */
 		public static function show($slug)
 		{
-			$posts = Post::where('categories.slug','=', $slug)
-							->join('categories', 'categories.id', '=','posts.category_id')
-							->select('title', 'posts.image', 'posts.slug','categories.image as ctgimage')
-							->paginate(8);
-			return view('post.index', compact('posts'));
+			$post = Post::where('slug', $slug)->firstOrFail();
+			return view('post.show', compact('post'));
 		}
+
+
+
+        public static function similars($id,$name,$post){
+            $posts=Post::where('category_id',$id)->get();
+		    return view('post._similars',compact('posts','name','post'));
+        }
 	}

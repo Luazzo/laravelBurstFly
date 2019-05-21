@@ -3,6 +3,7 @@
 /public/storage
 /storage/*.key
 /.idea
+/doc
 /vendor
 .env
 .phpunit.result.cache

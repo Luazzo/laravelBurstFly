@@ -1,3 +1,0 @@
-
-        @dump($posts)
-        @dump($pages)

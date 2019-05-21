@@ -1,6 +1,10 @@
-@extends ('layout')
-
-
+@extends ('layouts.layout')
+@section('title')
+    HomePage
+@stop
+@section('head')
+    <link href="{{asset('css/style.css')}}" rel='stylesheet' type='text/css'>
+@endsection
 @section ('content')
     <div class="container object">
 
@@ -9,7 +13,7 @@
 
                 @foreach($posts as $post)
                     <figure class="white">
-                        <a href="#">
+                        <a href="{{route('postShow',['slug'=>$post->slug])}}">
                             <img src="{{ Voyager::image( $post->image ) }}" alt="" />
                             <dl>
                                 <dt>{{ $post->title }}</dt>

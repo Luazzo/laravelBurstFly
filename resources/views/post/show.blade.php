@@ -1,7 +1,13 @@
 @extends ('layouts.layout')
+
+@section('headerLogo')
+    <a href="{{route('index')}}"><div id="logo"><img src="img/logo-burst.svg" alt="logo burstfly" height="38" width="90"></div></a>
+@endsection
+
 @section('title')
     PostShow
 @endsection
+
 @section('head')
     <link href="{{asset('css/app.css')}}" rel='stylesheet' type='text/css'>
 @endsection
@@ -12,9 +18,9 @@
         <div id="main-container-image">
 
             <div class="title-item">
-                <div class="title-icon"></div>
+                <div class="title-icon" style="background: url({{Voyager::image( $post->category->image ) }} ) no-repeat; background-size: 68px 68px; "></div>
                 <div class="title-text">{{$post->title}}</div>
-                <div class="title-text-2">{{$post->created_at->format('M d, Y')}} by {{$post->author}}</div>
+                <div class="title-text-2">{{$post->created_at->format('M d, Y')}} by {{$post->authorId->name}}</div>
             </div>
 
 
@@ -54,9 +60,6 @@
                         <hr/><h2>Your comments</h2>
                     </div>
                 </div>
-                @foreach($post->comments as $cmnt)
-
-                @endforeach
 
                 <div class="post-reply">
                     <div class="image-reply-post"></div>
@@ -69,15 +72,24 @@
                     <div class="name-reply-post-2">Nathan Shaw</div>
                     <div class="text-reply-post-2">Well done ! I like the way you did it. Awesome ! </div>
                 </div>
-                {!! \App\Http\Controllers\CommentController::create() !!}
 
-
-
-
-
-
-
+                <div class="post-send">
+                    <div id="main-post-send">
+                        <div id="title-post-send">Add your comment</div>
+                        <form id="contact" method="post" action="/onclickprod/formsubmit_op.asp">
+                            <fieldset>
+                                <p><textarea id="message" name="message" maxlength="500" placeholder="Votre Message" tabindex="5" cols="30" rows="4"></textarea></p>
+                            </fieldset>
+                            <div style="text-align:center;"><input type="submit" name="envoi" value="Envoyer" /></div>
+                        </form>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 @stop
+
+
+@section('script')
+    <script type="text/javascript" src="js/showPost.js"></script>
+@endsection

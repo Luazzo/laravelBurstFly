@@ -1,9 +1,6 @@
-<div id="wrapper-thank">
-    <div class="thank">
-        <div class="thank-text">bu<span style="letter-spacing:-5px;">rs</span>tfly</div>
-    </div>
-</div>
-<div id="main-container-footer">
+
+<footer>
+    <div id="main-container-footer">
         <div class="container-footer">
 
             <div id="row-1f">
@@ -30,7 +27,7 @@
 
         </div>
     </div>
-<div id="wrapper-copyright">
+    <div id="wrapper-copyright">
         <div class="copyright">
             <div class="copy-text object">Copyright © 2016. Template by <a style="color:#D0D1D4;" href="https://dcrazed.com/">Dcrazed</a></div>
 
@@ -42,3 +39,4 @@
             </div>
         </div>
     </div>
+</footer>

@@ -1,10 +1,17 @@
 @extends ('layouts.layout')
+
+@section('headerLogo')
+    <div class="logo"><a href="{{ route( 'index' ) }}"><img src="img/logo-burst.png" alt="logo bursty" height="38" width="90"></a></div>
+@endsection
+
 @section('title')
     HomePage
 @stop
+
 @section('head')
     <link href="{{asset('css/style.css')}}" rel='stylesheet' type='text/css'>
 @endsection
+
 @section ('content')
     <div class="container object">
 
@@ -35,16 +42,8 @@
 
 
     <!--pagination-->
-    <div id="wrapper-oldnew">
-        <div class="oldnew">
-            <div class="wrapper-oldnew-prev">
-                <div id="oldnew-prev"></div>
-            </div>
-            <div class="wrapper-oldnew-next">
-                <div id="oldnew-next"></div>
-            </div>
-        </div>
-    </div>
+    {{ $posts->links('partials.pagination', ['posts'=>$posts]) }}
+
 
     <!--platz-->
     <div id="wrapper-thank">
@@ -52,4 +51,9 @@
             <div class="thank-text">pl<span style="letter-spacing:-5px;">a</span>tz</div>
         </div>
     </div>
+@endsection
+
+
+@section('script')
+    <script type="text/javascript" src="js/indexPost.js"></script>
 @endsection

@@ -20,7 +20,8 @@ Route::get('/','PostController@index')->name('index'); //OU COMME çA: Route::ge
 Route::get('/posts/{slug}','PostController@show')->name('postShow');
 //category.posts
 Route::get('/categories/{slug}','PostController@show')->name('category.posts'); //OU COMME çA: Route::get('/categories/{slug}', ['as'=>'category.posts', 'uses'=> 'PostController@show']);
-
+//comments
+Route::post('/comments/create','CommentController@store')->name('comment.store');
 
 Auth::routes();
 

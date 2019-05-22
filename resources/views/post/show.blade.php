@@ -54,6 +54,9 @@
                         <hr/><h2>Your comments</h2>
                     </div>
                 </div>
+                @foreach($post->comments as $cmnt)
+
+                @endforeach
 
                 <div class="post-reply">
                     <div class="image-reply-post"></div>
@@ -66,7 +69,7 @@
                     <div class="name-reply-post-2">Nathan Shaw</div>
                     <div class="text-reply-post-2">Well done ! I like the way you did it. Awesome ! </div>
                 </div>
-
+                {!! \App\Http\Controllers\CommentController::create() !!}
 
 
 

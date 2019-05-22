@@ -22,9 +22,9 @@ class CommentController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public static  function create()
     {
-        return view('comment.creat');
+        return view('comment.create');
     }
 
     /**

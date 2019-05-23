@@ -55,5 +55,5 @@
 
 
 @section('script')
-    <script type="text/javascript" src="js/indexPost.js"></script>
+    <script type="text/javascript" src="{{asset('js/indexPost.js')}}"></script>
 @endsection

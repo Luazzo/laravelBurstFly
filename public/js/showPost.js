@@ -310,6 +310,6 @@ $(document).on('touchend mouseout', '#logo', function(event){
 
 $("form").on("submit", function(event) {
   event.preventDefault();
-  $.post("/burstfly/form-burstfly-modified.asp",$("form").serialize(), function(data) {//alert(data);
-	});
+  /*$.post("/burstfly/form-burstfly-modified.asp",$("form").serialize(), function(data) {//alert(data);
+	});*/
 });

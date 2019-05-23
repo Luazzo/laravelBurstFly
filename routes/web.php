@@ -1,7 +1,6 @@
 <?php
 
 	use TCG\Voyager\Facades\Voyager;
-	use App\Post;
 	
 	
 /*
@@ -13,6 +12,11 @@
 | routes are loaded by the RouteServiceProvider within a group which
 | contains the "web" middleware group. Now create something great!
 */
+//ajaxComment
+Route::get('ajax/comment', 'CommentController@addComment')->name('ajax.insertComment');
+
+
+
 
 //index
 Route::get('/','PostController@index')->name('index'); //OU COMME çA: Route::get('/categories/{slug}', ['as'=>'category.posts', 'uses'=> 'PostController@show']);

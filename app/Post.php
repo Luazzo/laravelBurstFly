@@ -12,13 +12,8 @@ use \TCG\Voyager\Models\Post as pst;
  */
 class Post extends pst
 {
-	/**
-	 * @param $slug
-	 */
-	public static function postsOfCategory($slug)
-	{
-		/*return $this  ->where('categories.slug','=', $slug)
-						->join('categories', 'categories.id', '=', 'posts.category_id');*/
-						
+	public function comments()
+    {
+        return $this->hasMany('App\Comment');
     }
 }

@@ -6,7 +6,6 @@
     $(function () {
         $("#contact").submit(function (e) {
             e.preventDefault();
-
             $.ajax({
                 url:'ajax/comment',
                 data:{
@@ -15,9 +14,18 @@
                     user: $('#user').val()
                 },
                 method: 'get',
-                success: function(reponsePHP) {
-                    console.log(reponsePHP);
+                success: function(user) {
+                    console.log(user);
 
+                    $('.post-reply').removeClass('post-reply').addClass('post-reply-2');
+
+                    $html = "<div class=\"post-reply\">\n" +
+                            "    <div class=\"image-reply-post\"></div>\n" +
+                            "    <div class=\"name-reply-post\">"+user['name']+"</div>\n" +
+                            "    <div class=\"text-reply-post\">"+$('#body').val()+"</div>\n" +
+                            "</div>";
+
+                    $('.white').after($html);
 
                 },
                 error: function (jqXHR, exception) {

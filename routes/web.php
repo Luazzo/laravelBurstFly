@@ -1,6 +1,8 @@
 <?php
 
 	use TCG\Voyager\Facades\Voyager;
+	use Illuminate\Support\Facades\Auth;// je l'ajoute pour avoir acces aux files de AUTH
+	
 	
 /*
 |--------------------------------------------------------------------------
@@ -15,12 +17,11 @@
 Route::get('ajax/comment', 'CommentController@addComment')->name('ajax.insertComment');
 
 
-
-
 //index
 Route::get('/','PostController@index')->name('home'); //OU COMME çA: Route::get('/categories/{slug}', ['as'=>'category.posts', 'uses'=> 'PostController@show']);
-Route::get('/post/{slug}','PostController@show')->name('postShow'); //OU COMME çA: Route::get('/categories/{slug}', ['as'=>'category.posts', 'uses'=> 'PostController@show']);
-Route::get('/home','PostController@index')->name('home'); //OU COMME çA: Route::get('/categories/{slug}', ['as'=>'category.posts', 'uses'=> 'PostController@show']);
+
+//post.show
+Route::get('/post/{slug}','PostController@show')->name('post.show'); //OU COMME çA: Route::get('/categories/{slug}', ['as'=>'category.posts', 'uses'=> 'PostController@show']);
 
 //category.posts
 Route::get('/categories/{slug}','PostController@indexByCategory')->name('category.posts'); //OU COMME çA: Route::get('/categories/{slug}', ['as'=>'category.posts', 'uses'=> 'PostController@show']);
@@ -33,8 +34,4 @@ Route::group(['prefix' => 'admin'], function () {
 //Routes d'Authintification
 Auth::routes();
 
-
-
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
+//Route::get('/logout', 'Auth\LoginController@logout')->name('logout');

@@ -1,7 +1,7 @@
 @extends ('layouts.layout')
 
 @section('headerLogo')
-    <a href="{{route('index')}}"><div id="logo"><img src="img/logo-burst.svg" alt="logo burstfly" height="38" width="90"></div></a>
+    <a href="{{route('home')}}"><div id="logo"><img src="img/logo-burst.svg" alt="logo burstfly" height="38" width="90"></div></a>
 @endsection
 
 @section('title')
@@ -55,11 +55,6 @@
                     {!! \App\Http\Controllers\PostController::similars($post->category->id,$post->category->name,$post->id) !!}
                 </div>
 
-                <div class="post-reply">
-                    <div id="title-post-send">
-                        <hr/><h2>Your comments</h2>
-                    </div>
-                </div>
 
                 <div class="post-reply">
                     <div class="image-reply-post"></div>
@@ -77,8 +72,8 @@
                     <div id="main-post-send">
                         <div id="title-post-send">Add your comment</div>
                         <form id="contact" method="get" action="">
-                            <input name="_token" type="hidden" value="{{ csrf_token() }}">
                             <input id="user" name="user" type="hidden" value="2">
+                            <input id="token" name="token" type="hidden" value="{{csrf_token()}}">
                             <input id="post" name="post" type="hidden" value="{{$post->id}}">
                             <fieldset>
                                 <p><textarea id="body" name="body" maxlength="500" placeholder="Votre Message" tabindex="5" cols="30" rows="4"></textarea></p>
@@ -89,6 +84,7 @@
                 </div>
             </div>
         </div>
+
     </div>
 @stop
 

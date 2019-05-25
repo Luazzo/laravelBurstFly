@@ -2,6 +2,7 @@
 
 	use TCG\Voyager\Facades\Voyager;
 	
+	
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -15,12 +16,11 @@
 Route::get('ajax/comment', 'CommentController@addComment')->name('ajax.insertComment');
 
 
-
-
 //index
 Route::get('/','PostController@index')->name('home'); //OU COMME çA: Route::get('/categories/{slug}', ['as'=>'category.posts', 'uses'=> 'PostController@show']);
+
+//postShow
 Route::get('/post/{slug}','PostController@show')->name('postShow'); //OU COMME çA: Route::get('/categories/{slug}', ['as'=>'category.posts', 'uses'=> 'PostController@show']);
-Route::get('/home','PostController@index')->name('home'); //OU COMME çA: Route::get('/categories/{slug}', ['as'=>'category.posts', 'uses'=> 'PostController@show']);
 
 //category.posts
 Route::get('/categories/{slug}','PostController@indexByCategory')->name('category.posts'); //OU COMME çA: Route::get('/categories/{slug}', ['as'=>'category.posts', 'uses'=> 'PostController@show']);
@@ -32,9 +32,5 @@ Route::group(['prefix' => 'admin'], function () {
 
 //Routes d'Authintification
 Auth::routes();
+Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
 
-
-
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');

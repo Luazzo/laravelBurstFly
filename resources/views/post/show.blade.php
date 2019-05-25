@@ -72,8 +72,8 @@
                     <div id="main-post-send">
                         <div id="title-post-send">Add your comment</div>
                         <form id="contact" method="get" action="">
-                            <input id="user" name="user" type="hidden" value="2">
-                            <input id="token" name="token" type="hidden" value="{{csrf_token()}}">
+                            <input id="token" name="token" type="hidden" value="{{csrf_token()}}"> <!--@ csrf fait un erreur -->
+                            <input id="user" name="user" type="hidden" value="{{Auth::user()->id}}">
                             <input id="post" name="post" type="hidden" value="{{$post->id}}">
                             <fieldset>
                                 <p><textarea id="body" name="body" maxlength="500" placeholder="Votre Message" tabindex="5" cols="30" rows="4"></textarea></p>

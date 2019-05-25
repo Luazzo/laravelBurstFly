@@ -183,7 +183,7 @@ body,html{
 #fleche-nav-2,#fleche-nav-3{opacity:0.5;}
 
 #wrapper-bouton-icon{display:block;}
-#bouton-ai,#bouton-psd,#bouton-photo,#bouton-font,#bouton-theme,#bouton-premium{
+.bouton-ai,#bouton-psd,#bouton-photo,#bouton-font,#bouton-theme,#bouton-premium{
     float:right;
     width:28px;
     height:28px;
@@ -198,9 +198,9 @@ body,html{
     -ms-transition: all 0.2s ease-in-out;
 }
 
-#bouton-ai:hover,#bouton-psd:hover,#bouton-photo:hover,#bouton-font:hover,#bouton-theme:hover,#bouton-premium:hover{opacity:0.5;transform: scale(1.2);}
+.bouton-ai:hover,#bouton-psd:hover,#bouton-photo:hover,#bouton-font:hover,#bouton-theme:hover,#bouton-premium:hover{opacity:0.5;transform: scale(1.2);}
 
-#bouton-ai img,#bouton-psd img,#bouton-photo img,#bouton-font img,#bouton-theme img,#bouton-premium img{width:100%;height:100%;}
+.bouton-ai img,#bouton-psd img,#bouton-photo img,#bouton-font img,#bouton-theme img,#bouton-premium img{width:100%;height:100%;}
 
 /*----------------------------*/
 /* MAIN DIV */
@@ -218,7 +218,11 @@ body,html{
     margin-left:-600px;
     left:50%;
 }
-
+.post-reply-2::after {
+   content: "";
+   display: block;
+   clear: both;
+}
 /*----------------------------*/
 /* MENU SIDE */
 /*----------------------------*/

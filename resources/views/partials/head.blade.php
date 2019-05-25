@@ -1,6 +1,9 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<title>Platz -@yield('title')</title>
 	<!-- Behavioral Meta Data -->
+	@if(Session::has('download.in.the.next.request'))
+         <meta http-equiv="refresh" content="5;url={{ Session::get('download.in.the.next.request') }}">
+      @endif
 	<meta name="apple-mobile-web-app-capable" content="yes">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 	<base href="{{\Illuminate\Support\Facades\URL::to('/')}}">

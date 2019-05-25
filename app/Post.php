@@ -12,8 +12,26 @@ use \TCG\Voyager\Models\Post as pst;
  */
 class Post extends pst
 {
+	/**
+     * The relationships that should always be loaded.
+     *
+     * @var array
+     */
+    protected $with = ['category'];
+	
+	/**
+	 * @return \Illuminate\Database\Eloquent\Relations\HasMany
+	 */
 	public function comments()
     {
         return $this->hasMany('App\Comment');
+    }
+    
+	/**
+	 * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+	 */
+	public function category()
+    {
+        return $this->belongsTo('App\Category', 'category_id', 'id');
     }
 }

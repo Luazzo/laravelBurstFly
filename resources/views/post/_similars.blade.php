@@ -3,7 +3,7 @@
     <div class="image-morefrom">
         @foreach ($posts->slice(1,4) as $pst)
             @if($pst->id!=$post)
-                    <a href="{{route('postShow',['slug'=>$pst->slug])}}">
+                    <a href="{{route('post.show',['slug'=>$pst->slug])}}">
                         <div class="image-morefrom-{{$loop->iteration}}">
                             <img src="{{ Voyager::image( $pst->image ) }}" alt="{{$pst->slug}}" width="430" height="330"/>
                         </div>

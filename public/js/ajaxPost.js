@@ -4,20 +4,20 @@
 * */
 
     $(function () {
-        $("#contact").submit(function (e) {
+        $(".white > a").click(function (e) {
             e.preventDefault();
+            let slug = $('img',this).attr('alt');
+            //alert($('img',this).attr('alt'));
             $.ajax({
-                url:'ajax/comment',
+                url:'ajax/post/slug',
                 data:{
-                    body: $('#body').val(),
-                    post: $('#post').val(),
-                    user: $('#user').val()
+                    slug: $('img',this).attr('alt')
                 },
                 method: 'get',
-                success: function(user) {
-                    console.log(user);
+                success: function(post) {
+                    console.log(post);
 
-                    $('.post-reply').removeClass('post-reply').addClass('post-reply-2');
+                   /* $('.post-reply').removeClass('post-reply').addClass('post-reply-2');
 
                     $html = "<div class=\"post-reply\">\n" +
                             "    <div class=\"image-reply-post\"></div>\n" +
@@ -25,7 +25,7 @@
                             "    <div class=\"text-reply-post\">"+$('#body').val()+"</div>\n" +
                             "</div>";
 
-                    $('.white').after($html);
+                    $('.white').after($html);*/
 
                 },
                 error: function (jqXHR, exception) {

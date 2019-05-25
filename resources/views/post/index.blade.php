@@ -1,7 +1,7 @@
 @extends ('layouts.layout')
 
 @section('headerLogo')
-    <div class="logo"><a href="{{ route( 'index' ) }}"><img src="img/logo-burst.png" alt="logo bursty" height="38" width="90"></a></div>
+    <div class="logo"><a href="{{ route( 'home' ) }}"><img src="img/logo-burst.png" alt="logo bursty" height="38" width="90"></a></div>
 @endsection
 
 @section('title')
@@ -20,7 +20,7 @@
 
                 @foreach($posts as $post)
                     <figure class="white">
-                        <a href="{{route('postShow',['slug'=>$post->slug])}}">
+                        <a href="{{route('post.show',['slug'=>$post->slug])}}">
                             <img src="{{ Voyager::image( $post->image ) }}" alt="" />
                             <dl>
                                 <dt>{{ $post->title }}</dt>
@@ -55,5 +55,5 @@
 
 
 @section('script')
-    <script type="text/javascript" src="js/indexPost.js"></script>
+    <script type="text/javascript" src="{{asset('js/indexPost.js')}}"></script>
 @endsection

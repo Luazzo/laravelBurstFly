@@ -3,7 +3,8 @@
 	namespace App\Http\Controllers;
 	
 	use App\Post;
-	use Illuminate\Http\Request;
+    use Collective\Annotations\Routing\Annotations\Annotations\Get;
+    use Illuminate\Http\Request;
 	use Illuminate\Support\Facades\DB;
 	
 	
@@ -38,8 +39,13 @@
 							->paginate(4);
 			return view('post.index', compact('posts'));
 		}
-		
-		public static function show($slug)
+
+        /**
+         * @param $slug
+         * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+         *
+         */
+        public function show($slug)
 		{
 			$post = Post::where('slug', $slug)->firstOrFail();
 			return view('post.show', compact('post'));
@@ -48,5 +54,10 @@
         public static function similars($id,$name,$post){
             $posts=Post::where('category_id',$id)->get();
 		    return view('post._similars',compact('posts','name','post'));
+        }
+
+        public static function sho()
+        {
+            return view('post.sho');
         }
 	}

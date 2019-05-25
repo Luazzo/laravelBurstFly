@@ -39,7 +39,7 @@ class AnnotationsServiceProvider extends ServiceProvider {
      *
      * @var bool
      */
-    protected $scanControllers = true;
+    protected $scanControllers = false;
 
     /**
      * Determines whether or not to automatically scan all namespaced

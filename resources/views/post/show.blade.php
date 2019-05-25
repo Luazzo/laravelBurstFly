@@ -67,5 +67,4 @@
 
 
 @section('script')
-    <script type="text/javascript" src="js/showPost.js"></script>
 @endsection

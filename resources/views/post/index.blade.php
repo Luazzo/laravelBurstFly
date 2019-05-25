@@ -20,7 +20,7 @@
 
                 @foreach($posts as $post)
                     <figure class="white">
-                        <a href="{{route('postShow',['slug'=>$post->slug])}}">
+                        <a href="{{route('post.show',['slug'=>$post->slug])}}">
                             <img src="{{ Voyager::image( $post->image ) }}" alt="" />
                             <dl>
                                 <dt>{{ $post->title }}</dt>

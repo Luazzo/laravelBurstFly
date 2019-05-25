@@ -43,10 +43,9 @@
         /**
          * @param $slug
          * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-         * @Get("posts/{slug}", as="postShow")
          *
          */
-        public static function show($slug)
+        public function show($slug)
 		{
 			$post = Post::where('slug', $slug)->firstOrFail();
 			return view('post.show', compact('post'));
@@ -55,5 +54,10 @@
         public static function similars($id,$name,$post){
             $posts=Post::where('category_id',$id)->get();
 		    return view('post._similars',compact('posts','name','post'));
+        }
+
+        public static function sho()
+        {
+            return view('post.sho');
         }
 	}

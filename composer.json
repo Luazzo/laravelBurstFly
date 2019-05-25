@@ -15,7 +15,6 @@
         "laravel/tinker": "^1.0",
         "laravelcollective/annotations": "5.8.*",
         "laravelcollective/html": "v5.8.0",
-        "laravelista/comments": "^2.1",
         "tcg/voyager": "^1.2"
     },
     "require-dev": {

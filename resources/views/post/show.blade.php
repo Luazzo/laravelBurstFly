@@ -58,10 +58,7 @@
 
             </div>
         </div>
-        <div class="col-md-2">
-            @comments(['model' => $post])
-            @endcomments
-        </div>
+
     </div>
 @stop
 

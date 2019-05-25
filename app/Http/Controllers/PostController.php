@@ -43,10 +43,9 @@
         /**
          * @param $slug
          * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-         * @Get("posts/{slug}", as="postShow")
          *
          */
-        public static function show($slug)
+        public function show($slug)
 		{
 			$post = Post::where('slug', $slug)->firstOrFail();
 			return view('post.show', compact('post'));

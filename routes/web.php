@@ -1,8 +1,7 @@
 <?php
 
 	use TCG\Voyager\Facades\Voyager;
-	use App\Post;
-	
+
 	
 /*
 |--------------------------------------------------------------------------
@@ -15,13 +14,11 @@
 */
 
 //index
-Route::get('/','PostController@index')->name('index'); //OU COMME çA: Route::get('/categories/{slug}', ['as'=>'category.posts', 'uses'=> 'PostController@show']);
+Route::get('/','PostController@index')->name('home'); //OU COMME çA: Route::get('/categories/{slug}', ['as'=>'category.posts', 'uses'=> 'PostController@show']);
+Route::get('/home','PostController@index')->name('home'); //OU COMME çA: Route::get('/categories/{slug}', ['as'=>'category.posts', 'uses'=> 'PostController@show']);
 
 //category.posts
 Route::get('/categories/{slug}','PostController@indexByCategory')->name('category.posts'); //OU COMME çA: Route::get('/categories/{slug}', ['as'=>'category.posts', 'uses'=> 'PostController@show']);
-
-//postShow
-Route::get('/posts/{slug}','PostController@show')->name('postShow');
 
 //routes de Voyager
 Route::group(['prefix' => 'admin'], function () {
@@ -31,3 +28,8 @@ Route::group(['prefix' => 'admin'], function () {
 //Routes d'Authintification
 Auth::routes();
 
+
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

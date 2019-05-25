@@ -5,9 +5,11 @@ namespace App;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Laravelista\Comments\Commenter;
 
 class User extends \TCG\Voyager\Models\User
 {
+    use Notifiable, Commenter;
     use Notifiable;
 
     /**
@@ -15,9 +17,8 @@ class User extends \TCG\Voyager\Models\User
      *
      * @var array
      */
-    protected $fillable = [
-        'name', 'email', 'password',
-    ];
+    // Make sure you set these properties for the model
+    protected $fillable = ['name', 'username', 'email', 'password', 'contact',];
 
     /**
      * The attributes that should be hidden for arrays.

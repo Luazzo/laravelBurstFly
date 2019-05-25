@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
+use Laravelista\Comments\Commentable;
 use \TCG\Voyager\Models\Post as pst;
 
 /**
@@ -12,13 +13,6 @@ use \TCG\Voyager\Models\Post as pst;
  */
 class Post extends pst
 {
-	/**
-	 * @param $slug
-	 */
-	public static function postsOfCategory($slug)
-	{
-		/*return $this  ->where('categories.slug','=', $slug)
-						->join('categories', 'categories.id', '=', 'posts.category_id');*/
-						
-    }
+    use Commentable;
+
 }

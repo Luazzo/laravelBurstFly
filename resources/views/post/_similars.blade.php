@@ -1,7 +1,7 @@
 <div class="wrapper-morefrom">
     <div class="text-morefrom">More from {{$name}} </div>
     <div class="image-morefrom">
-        @foreach ($posts->slice(1,5) as $pst)
+        @foreach ($posts->slice(1,4) as $pst)
             @if($pst->id!=$post)
                     <a href="{{route('postShow',['slug'=>$pst->slug])}}">
                         <div class="image-morefrom-{{$loop->iteration}}">

@@ -1,8 +1,5 @@
 <?php
 use TCG\Voyager\Facades\Voyager;
-
-
-	
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,22 +11,17 @@ use TCG\Voyager\Facades\Voyager;
 */
 //ajaxComment
 Route::get('ajax/comment', 'CommentController@addComment')->name('ajax.insertComment');
-
-
 //index
-Route::get('/','PostController@index')->name('home'); //OU COMME çA: Route::get('/categories/{slug}', ['as'=>'category.posts', 'uses'=> 'PostController@show']);
+Route::get('/','PostController@index')->name('home');
 
 //postShow
-Route::get('/post/{slug}','PostController@show')->name('post.show'); //OU COMME çA: Route::get('/categories/{slug}', ['as'=>'category.posts', 'uses'=> 'PostController@show']);
-
+Route::get('/post/{slug}','PostController@show')->name('post.show');
 //category.posts
-Route::get('/categories/{slug}','PostController@indexByCategory')->name('category.posts'); //OU COMME çA: Route::get('/categories/{slug}', ['as'=>'category.posts', 'uses'=> 'PostController@show']);
-
+Route::get('/categories/{slug}','PostController@indexByCategory')->name('category.posts');
 //routes de Voyager
 Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();
 });
-
 //Routes d'Authintification
 Auth::routes();
 Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');

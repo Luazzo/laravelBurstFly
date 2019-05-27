@@ -178,7 +178,6 @@ return [
         //Collective\Html\HtmlServiceProvider
         Collective\Html\HtmlServiceProvider::class,
         Recca0120\LaravelTracy\LaravelTracyServiceProvider::class,
-        App\Providers\AnnotationsServiceProvider::class
     ],
 
     /*

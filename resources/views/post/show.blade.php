@@ -5,7 +5,7 @@
 @endsection
 
 @section('title')
-    PostShow
+    Post-show
 @endsection
 
 @section('head')

@@ -28,6 +28,7 @@ $categories = CategoryController::index();
 
         <div id="wrapper-bouton-icon">
 
+
             @foreach($categories as $category)
 
                 <div id="bouton-ai">
@@ -37,7 +38,14 @@ $categories = CategoryController::index();
                 </div>
 
             @endforeach
-
+            @guest
+            @else
+                <div id="bouton-ai">
+                    <a href="{{ route('profile', auth()->id()) }}">
+                        <img src="{{ asset('img/profile.png') }}" alt="user-profile" title="user-profile" height="28" width="28">
+                    </a>
+                </div>
+            @endguest
         </div>
     </div>
 </div>

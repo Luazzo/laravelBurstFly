@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+use Collective\Annotations\Routing\Annotations\Annotations\Get;
 use Illuminate\Support\Facades\Auth as Auth;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -51,9 +52,14 @@ class LoginController extends Controller
         }
         return view('auth.login');
     }
-    
+
+    /**
+     * {@inheritDoc}
+     * @Get("logout", as="logout")
+     */
     public function logout(Request $request) {
 		Auth::logout();
 		return redirect('/');
 	}
+
 }

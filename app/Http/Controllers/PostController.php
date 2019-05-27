@@ -4,6 +4,7 @@
 	
 	use App\Post;
     use Collective\Annotations\Routing\Annotations\Annotations\Get;
+    use Collective\Annotations\Routing\Annotations\Annotations\Middleware;
     use Illuminate\Http\Request;
 	use Illuminate\Support\Facades\DB;
 	
@@ -40,24 +41,19 @@
 			return view('post.index', compact('posts'));
 		}
 
-        /**
-         * @param $slug
-         * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-         *
-         */
-        public function show($slug)
-		{
-			$post = Post::where('slug', $slug)->firstOrFail();
-			return view('post.show', compact('post'));
-		}
-		
         public static function similars($id,$name,$post){
             $posts=Post::where('category_id',$id)->get();
 		    return view('post._similars',compact('posts','name','post'));
         }
 
-        public static function sho()
+        /**
+         * @Get("post/{sloug}",as="post.show")
+         * @param $slug
+         * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+         */
+        public static function show ($slug)
         {
-            return view('post.sho');
+            $post = Post::where('slug', $slug)->firstOrFail();
+            return view('post.show', compact('post'));
         }
 	}

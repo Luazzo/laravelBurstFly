@@ -1,20 +1,9 @@
-@extends ('layouts.layout')
+@extends('layouts.app')
 
-@section('headerLogo')
-    <div class="logo"><a href="{{ route( 'home' ) }}"><img src="{{asset('img/logo-burst.png')}}" alt="logo bursty" height="38" width="90"></a></div>
-@endsection
-
-@section('title')
-    Login
-@stop
-
-@section('head')
-    <link href="{{asset('css/style.css')}}" rel='stylesheet' type='text/css'>
-@endsection
 @section('content')
-<div class="container object">
-    <div class="justify-content-md-around">
-        <div class="">
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
             <div class="card">
                 <div class="card-header">{{ __('Login') }}</div>
 
@@ -81,7 +70,4 @@
         </div>
     </div>
 </div>
-@endsection
-@section('script')
-    <script type="text/javascript" src="{{asset('js/indexPost.js')}}"></script>
 @endsection

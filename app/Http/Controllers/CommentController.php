@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Collective\Annotations\Routing\Annotations\Annotations\Get;
 use Illuminate\Http\Request;
 use App\Comment;
 
@@ -11,36 +12,30 @@ use App\Comment;
  * @mixin
  */
 class CommentController extends Controller
-{/*
-	public function __get($body) {
-        if ($body == 'body') {
-            return 'body';
-        }
-        return NULL;
-    }*/
-	
-	
+{
+
     /**
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
+     * @return \App\Comment
      */
     public function addComment(Request $request)
     {
-    	try{
-	        //$post = Post::findOrFail($request->post_id);
-	        $comment = new Comment;
-	        $comment->body = $request->input('body');
-	        $comment->user_id = $request->input('user');
-	        $comment->post_id = $request->input('post');
-	        
-	        $comment->save();
-	        return $comment;
-	    }
-	    catch(\Exception $e){
-			// do task when error
-			 $e->getMessage();   // insert query
-	    }
+        try{
+            //$post = Post::findOrFail($request->post_id);
+            $comment = new Comment;
+            $comment->body = $request->input('body');
+            $comment->user_id = $request->input('user');
+            $comment->post_id = $request->input('post');
+
+            $comment->save();
+            return $comment;
+        }
+        catch(\Exception $e){
+            // do task when error
+            $e->getMessage();   // insert query
+        }
     }
-    
+
     /**
      * Display a listing of the resource.
      *
@@ -64,15 +59,15 @@ class CommentController extends Controller
     /*public function __construct() {
         $this->middleware('auth');
     }*/
-	
-	/**
-	 * @param Request $request
-	 */
-	public function store(Request $request)
+
+    /**
+     * @param Request $request
+     */
+    public function store(Request $request)
     {
         //
     }
-    
+
     /**
      * Display the specified resource.
      *
@@ -118,3 +113,4 @@ class CommentController extends Controller
         //
     }
 }
+

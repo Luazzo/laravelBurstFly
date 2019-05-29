@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use Collective\Annotations\Routing\Annotations\Annotations\Get;
 use Illuminate\Http\Request;
 use App\Comment;
 

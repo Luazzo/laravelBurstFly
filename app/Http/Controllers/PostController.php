@@ -12,7 +12,6 @@
     use Illuminate\Support\Facades\Session;
     use Illuminate\Support\Str;
     use Illuminate\Validation\Rule;
-    use TCG\Voyager\Http\Controllers\VoyagerBaseController;
 
 
     /**
@@ -129,6 +128,11 @@
                 return back()->with('success','Item created successfully!');
             }
         }
+
+        /**
+         * @param $id
+         * @return \Illuminate\Http\RedirectResponse
+         */
         public function destroy($id){
             // delete
             $post = Post::find($id);
@@ -137,5 +141,23 @@
             // redirect
             Session::flash('message', 'le post est bien supprime!');
             return Redirect::to('profile/'.Auth::user()->id);
+        }
+
+        /**
+         * @param $id
+         * @return \Symfony\Component\HttpFoundation\BinaryFileResponse
+         */
+        public function download($id){
+            $post=Post::find($id);;
+            $img='storage/'.$post->image;
+            return response()->download($img,basename($img),['location'=>'/post/show/'.$post->slug]);
+        }
+
+        /**
+         * @return \Illuminate\Http\RedirectResponse
+         */
+        public function showWithDownload(){
+            Session::flash('download', 'true');
+            return back();
         }
 	}

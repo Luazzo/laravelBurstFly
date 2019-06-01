@@ -10,6 +10,9 @@
 
 @section('head')
     <link href="{{asset('css/app.css')}}" rel='stylesheet' type='text/css'>
+    @if(Session::has('download'))
+        <meta http-equiv="refresh" content="1; url={{ 'post/download/'.$post->id}}">
+    @endif
 @endsection
 @section ('content')
 
@@ -50,7 +53,7 @@
 
                     <div class="wrapper-download">
                         <div class="icon-download"><img src="{{asset('img/icon-download.svg')}}" alt="" width="19" height="26"/></div>
-                        <div class="text-download"><a href="#"><b>Download</b></a></div>
+                        <div class="text-download"><a href="{{route('post.download.show')}}"><b>Download</b></a></div>
                     </div>
                     {!! \App\Http\Controllers\PostController::similars($post->category->id,$post->category->name,$post->id) !!}
                 </div>

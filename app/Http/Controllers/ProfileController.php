@@ -35,25 +35,23 @@ class ProfileController extends Controller
      */
     public function edit(Request $request){
         $rules = [
-            'name'       => 'max:55',
-            'category'   =>'required',Rule::in(Category::all()),
+            'title'       => 'max:255',
         ];
         $validator = $request->validate($rules);
         if ($validator) {
 
-            return Redirect::to('post.edit',['id'=>$request->post_id])
+            return Redirect::to('profile.edit',['id'=>$request->user_id])
                 ->withErrors($validator);
         } else {
-            $post = Post::find($request->post_id);
-            if($request->file('image')!='') {
-                Storage::disk('voyager')->delete($post->avatar);
-                $post->avatar = $request->file('image')->store('post', 'voyager');
+            $user = User::find($request->user_id);
+            if($request->file('avatar')!='') {
+                Storage::disk('voyager')->delete($user->avatar);
+                $user->avatar = $request->file('avatar')->store('users', 'voyager');
             }
-            if($request->title!='')$post->title       = Input::get('title');
-            if($request->body!='')$post->email      = Input::get('body');
-            if($request->category!='')$post->category      = Input::get('category');
+            if($request->name !='')$user->name       = Input::get('name');
+            if($request->email!='')$user->email      = Input::get('email');
 
-            $post->save();
+            $user->save();
             // redirect
             return back()->with('success','Item created successfully!');
         }

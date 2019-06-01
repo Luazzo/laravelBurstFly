@@ -25,13 +25,14 @@
                         <label>Email :</label>
                         <input type="email" name="email" placeholder="{{auth::user()->email}}" class="form-control">
                         <label>name :</label>
-                        <input type="text" name="email" placeholder="{{auth::user()->name}}" class="form-control"><br/>
+                        <input type="text" name="name" placeholder="{{auth::user()->name}}" class="form-control"><br/>
                         <input type="submit" value="modifier" class="btn btn-primary">
                         <input type="hidden" value="{{auth::user()->id}} " name="user_id" class="form-control">
                     </figure>
                 </form>
                 <a class="btn btn-primary" href="{{url('/password/reset')}}">Changer le Mot de pass</a></br>
-                <div>@if ($errors->any())
+                <div>
+                    @if ($errors->any())
                         <div class="alert alert-danger">
                             <ul>
                                 @foreach ($errors->all() as $error)
@@ -39,7 +40,8 @@
                                 @endforeach
                             </ul>
                         </div>
-                    @endif</div>
+                    @endif
+                </div>
             </section>
             <aside class="col-md-8">
                 <div class="wrapper-navbouton">

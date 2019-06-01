@@ -28,12 +28,12 @@
                     <div class="wrapper-file">
                         <div class="icon-file"><img src="{{asset('img/category.jpg')}}" alt="" style="width: 21px;height: 21px;"/>   Category : </div>
                         <select style="margin-top: 8px;" name="category">
-                            @foreach(\App\Category::all()->pluck('name') as $category)
-                                <option value="{{$category}}"
-                                    @if($category == $post->category->name)
+                            @foreach(\App\Category::all() as $category)
+                                <option value="{{$category->id}}"
+                                    @if($category == $post->category)
                                     selected="selected"
                                     @endif
-                                >{{$category}}</option>
+                                >{{$category->name}}</option>
                             @endforeach
                         </select>
                     </div>
@@ -51,6 +51,17 @@
                     @csrf
                     @method('DELETE')
                     <input type="submit" style="background-color: #e3342f;" value="Supprimer">
+                    <div>
+                        @if ($errors->any())
+                            <div class="alert alert-danger">
+                                <ul>
+                                    @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        @endif
+                    </div>
                 </form>
             </div>
         </div>

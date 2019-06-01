@@ -17,11 +17,12 @@ Route::group(['middleware' => 'web'], function() {
     Route::get('home', 'PostController@index')->name('home');
     Route::get('', 'PostController@index')->name('homePage');
 //posts
+    Route::get('create/post', 'PostController@create')->name('post.create')->middleware('auth');
     Route::get('post/{slug}', 'PostController@show')->name('post.show');
-    Route::get('post/edit/{id}', 'PostController@edit')->name('post.edit')->middleware('auth');;
-    Route::get('post/create', 'PostController@create')->name('post.create')->middleware('auth');;
-    Route::post('post/valid', 'PostController@valid')->name('post.valid')->middleware('auth');;
-    Route::delete('post/delete/{id}', 'PostController@destroy')->name('post.delete')->middleware('auth');;
+    Route::get('post/edit/{id}', 'PostController@edit')->name('post.edit')->middleware('auth');
+    Route::post('post/store', 'PostController@store')->name('post.store')->middleware('auth');
+    Route::post('post/valid', 'PostController@valid')->name('post.valid')->middleware('auth');
+    Route::delete('post/delete/{id}', 'PostController@destroy')->name('post.delete')->middleware('auth');
     //category.posts
     Route::get('categories/{slug}', 'PostController@indexByCategory')->name('category.posts');
 //routes de Voyager

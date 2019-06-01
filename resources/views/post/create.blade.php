@@ -12,7 +12,7 @@
     <div class="container object">
         <div id="main-container-image">
             <form method="post" action="{{route('post.store')}}" enctype="multipart/form-data" class="form-group">
-                titr: <input placeholder="titre de post" name="title" type="text" class="form-control"><br/><br/><br/>
+                titre : <input placeholder="titre de post" name="title" type="text" class="form-control"><br/><br/><br/>
                     @csrf
                 <label for="image">image de post : </label>
                 <input type="file" name="image" class="form-control"> </br><br/><br/>

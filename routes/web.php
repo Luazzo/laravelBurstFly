@@ -15,11 +15,13 @@ Route::group(['middleware' => 'web'], function() {
     Route::get('ajax/comment', 'CommentController@addComment')->name('ajax.insertComment');
 //index
     Route::get('home', 'PostController@index')->name('home');
-    Route::get('', 'PostController@index')->name('homePage');
+    Route::get('/', 'PostController@index')->name('homePage');
 //posts
     Route::get('create/post', 'PostController@create')->name('post.create')->middleware('auth');
     Route::get('post/{slug}', 'PostController@show')->name('post.show');
     Route::get('post/edit/{id}', 'PostController@edit')->name('post.edit')->middleware('auth');
+    Route::get('post/download/{id}', 'PostController@download')->name('post.download');
+    Route::get('Show-download/post', 'PostController@showWithDownload')->name('post.download.show');
     Route::post('post/store', 'PostController@store')->name('post.store')->middleware('auth');
     Route::post('post/valid', 'PostController@valid')->name('post.valid')->middleware('auth');
     Route::delete('post/delete/{id}', 'PostController@destroy')->name('post.delete')->middleware('auth');

@@ -13,9 +13,9 @@
         <div id="main-container-image">
             <section class="work">
                 @foreach($posts as $post)
-                    <figure class="white">
+                    <figure class="white mix {{$post->ctgslug}}">
                         <a href="{{route('post.show',['slug'=>$post->slug])}}">
-                            <img src="{{ Voyager::image( $post->image ) }}" alt="" />
+                            <img src="{{ Voyager::image( $post->image ) }}" alt="{{ $post->slug }}" />
                             <dl>
                                 <dt>{{ $post->title }}</dt>
                                 <dd>{!! $post->body !!}</dd>
@@ -35,4 +35,10 @@
 @endsection
 @section('script')
     <script type="text/javascript" src="{{asset('js/indexPost.js')}}"></script>
+	<script type="text/javascript" src="{{asset('js/mixitup.min.js')}}"></script>
+    @if (Request::path() == '/')
+        <!--puisque cette page s'utilise pour affichage par une categorie ou ces script ne sont pas utilisés-->
+        <script type="text/javascript" src="{{asset('js/myMixitup.js')}}"></script>
+        <script type="text/javascript" src="{{asset('js/ajaxPost.js')}}"></script>
+    @endif
 @endsection

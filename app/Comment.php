@@ -32,7 +32,7 @@ class Comment extends Model
      */
     protected $translatable = ['body'];
 	
-	    /**
+	 /**
      * The relationships that should always be loaded.
      *
      * @var array

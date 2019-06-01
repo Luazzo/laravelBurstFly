@@ -11,7 +11,6 @@
     use Illuminate\Support\Facades\Redirect;
     use Illuminate\Support\Facades\Session;
     use Illuminate\Support\Str;
-    use Illuminate\Validation\Rule;
 
 
     /**
@@ -46,20 +45,46 @@
 			return view('post.index', compact('posts'));
 		}
 
-        public static function similars($id,$name,$post){
-            $posts=Post::where('category_id',$id)->get();
-		    return view('post._similars',compact('posts','name','post'));
+        /**
+         * @param $slug
+         * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+         *
+         */
+        public function show($slug)
+        {
+            $post = Post::where('slug', $slug)->firstOrFail();
+
+            //retourne size de file
+            $size = filesize('storage/'.$post->image); // Storage::size($path) ne fonctionne pas
+
+            //convertie size en valeur plus comprehensible
+            $sizeImg = self::human_filesize($size, $decimals = 2);
+
+            return view('post.show', compact('post', 'sizeImg'));
         }
 
         /**
-         * @Get("post/{sloug}",as="post.show")
-         * @param $slug
+         * @param $id
+         * @param $name
+         * @param $post
          * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
          */
-        public static function show ($slug)
-        {
-            $post = Post::where('slug', $slug)->firstOrFail();
-            return view('post.show', compact('post'));
+        public static function similars($id, $name, $post){
+            $posts=Post::where('category_id',$id)->get();
+            return view('post._similars',compact('posts','name','post'));
+        }
+
+        //retourne la valeur de size de file en bytes -> en Kb, Mb, Gb
+
+        /**
+         * @param $bytes
+         * @param int $decimals
+         * @return string
+         */
+        public function human_filesize($bytes, $decimals = 2) {
+            $factor = floor((strlen($bytes) - 1) / 3);
+            if ($factor > 0) $sz = 'KMGT';
+            return sprintf("%.{$decimals}f", $bytes / pow(1024, $factor)) . @$sz[$factor - 1] . 'B';
         }
 
         /**

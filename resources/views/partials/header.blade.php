@@ -31,7 +31,7 @@ $categories = CategoryController::index();
 
             @foreach($categories as $category)
 
-                <div id="bouton-ai">
+                <div class="bouton-ai"  data-filter=".{{$category->slug}}">
                     <a href="{{ route( 'category.posts', ['slug' => $category->slug] ) }}">
                         <img src="{{ Voyager::image( $category->image ) }}" alt="{{ $category->name }}" title="{{ $category->name }}" height="28" width="28">
                     </a>

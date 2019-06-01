@@ -4,7 +4,6 @@
 	
 	use App\Category;
     use App\Post;
-    use Collective\Annotations\Routing\Annotations\Annotations\Get;
     use Illuminate\Http\Request;
     use Illuminate\Support\Facades\Auth;
     use Illuminate\Support\Facades\Input;

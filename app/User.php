@@ -16,7 +16,7 @@ class User extends \TCG\Voyager\Models\User
      * @var array
      */
     // Make sure you set these properties for the model
-    protected $fillable = ['name', 'username', 'email', 'password', 'contact',];
+    protected $fillable = ['name', 'username', 'email','avatar',];
 
     /**
      * The attributes that should be hidden for arrays.
@@ -40,7 +40,9 @@ class User extends \TCG\Voyager\Models\User
 	{
 	    return $this->hasMany('App\Comment');
 	}
-	public function Id(){
+	public function posts()
+	{
+	    return $this->hasMany('App\Post','author_id');
+	}
 
-    }
 }

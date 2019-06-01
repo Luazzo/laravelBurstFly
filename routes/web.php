@@ -37,5 +37,6 @@ Route::group(['middleware' => 'web'], function() {
     Route::get('profile/{id}', 'ProfileController@show')->name('profile')->middleware('auth');;
     Route::post('profile/edit', 'ProfileController@edit')->name('profile.edit')->middleware('auth');;
 
+//Route::get('/logout', 'Auth\LoginController@logout')->name('logout');
 
 });

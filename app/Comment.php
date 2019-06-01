@@ -5,7 +5,6 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 
 use Illuminate\Database\Eloquent\Builder;
-use TCG\Voyager\Facades\Voyager;
 use TCG\Voyager\Traits\Resizable;
 use TCG\Voyager\Traits\Translatable;
 
@@ -16,7 +15,10 @@ use TCG\Voyager\Traits\Translatable;
 class Comment extends Model
 {
     use Translatable,
+	    
         Resizable;
+    
+    protected $fillable = ['body'];
 	
 	/**
 	 * @var string
@@ -30,7 +32,13 @@ class Comment extends Model
      */
     protected $translatable = ['body'];
 	
-	
+	    /**
+     * The relationships that should always be loaded.
+     *
+     * @var array
+     */
+    protected $with = ['user'];
+    
 	/**
 	 * @param array $options
 	 * @return bool|void
@@ -48,7 +56,7 @@ class Comment extends Model
 	/**
 	 * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
 	 */
-	public function userId()
+	public function user()
     {
         return $this->belongsTo('App\User', 'user_id', 'id');
     }
@@ -63,6 +71,17 @@ class Comment extends Model
     public function scopePublished(Builder $query)
     {
         return $query->where('status', '=', static::PUBLISHED);
+    }
+    
+    
+    public function scopePost(Builder $query, $id, $user_id)
+    {
+        return $query->where(
+			            ['id', '=', $id],
+			            ['user_id', '=', $user_id],
+			            ['users.id', '=', 'user_id']
+                    )
+	                ->join('users');
     }
 
     /**

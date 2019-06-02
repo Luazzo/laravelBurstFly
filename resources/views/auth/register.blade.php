@@ -1,6 +1,18 @@
-@extends('layouts.app')
+@extends ('layouts.layout')
 
-@section('content')
+@section('headerLogo')
+    <a href="{{route('home')}}"><div id="logo"><img src="img/logo-burst.svg" alt="logo burstfly" height="38" width="90"></div></a>
+@endsection
+
+@section('title')
+    register
+@endsection
+
+@section('head')
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link href="{{asset('css/app.css')}}" rel='stylesheet' type='text/css'>
+@endsection
+@section ('content')
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">

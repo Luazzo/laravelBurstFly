@@ -1,14 +1,19 @@
 <?php
-
 namespace App\Http\Controllers;
-
-use Illuminate\Http\Request;
-use TCG\Voyager\Models\Category;
+use Collective\Annotations\Routing\Annotations\Annotations\Middleware;
 use Illuminate\Support\Facades\DB;
 
+/**
+ * Class CategoryController
+ * @package App\Http\Controllers
+ */
 class CategoryController extends Controller
 {
-	public static function index()
+    /**
+     * @return \Illuminate\Support\Collection
+     * @Middleware("auth")
+     */
+    public static function index()
 	{
 		$categories = DB::table('categories')
 							->orderBy('order','DESC')

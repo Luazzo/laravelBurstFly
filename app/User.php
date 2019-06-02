@@ -6,10 +6,6 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
-/**
- * Class User
- * @package App
- */
 class User extends \TCG\Voyager\Models\User
 {
     use Notifiable;
@@ -19,9 +15,8 @@ class User extends \TCG\Voyager\Models\User
      *
      * @var array
      */
-    protected $fillable = [
-        'name', 'email', 'password',
-    ];
+    // Make sure you set these properties for the model
+    protected $fillable = ['name', 'username', 'email','avatar','password'];
 
     /**
      * The attributes that should be hidden for arrays.
@@ -40,4 +35,14 @@ class User extends \TCG\Voyager\Models\User
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+    
+	public function comments()
+	{
+	    return $this->hasMany('App\Comment');
+	}
+	public function posts()
+	{
+	    return $this->hasMany('App\Post','author_id');
+	}
+
 }

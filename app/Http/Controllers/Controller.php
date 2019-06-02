@@ -12,7 +12,6 @@ use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
  * @package App\Http\Controllers
  */
 class Controller extends BaseController
-
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 }

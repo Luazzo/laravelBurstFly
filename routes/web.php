@@ -39,8 +39,8 @@ Route::group(['middleware' => 'web'], function() {
     //profile
     Route::get('profile/{id}', 'ProfileController@show')->name('profile')->middleware('auth');;
     Route::post('profile/edit', 'ProfileController@edit')->name('profile.edit')->middleware('auth');;
-
-//Route::get('/logout', 'Auth\LoginController@logout')->name('logout');
+    //newsletter
+    Route::post('news/create','NewsController@create')->name('news.create');
 
 });
 Auth::routes();

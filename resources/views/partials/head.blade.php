@@ -3,7 +3,7 @@
 	<!-- Behavioral Meta Data -->
 	@if(Session::has('download.in.the.next.request'))
          <meta http-equiv="refresh" content="5;url={{ Session::get('download.in.the.next.request') }}">
-      @endif
+	@endif
 	<meta name="apple-mobile-web-app-capable" content="yes">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 	<!-- CSRF Token -->

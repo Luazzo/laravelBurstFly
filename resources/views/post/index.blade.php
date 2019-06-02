@@ -1,6 +1,6 @@
 @extends ('layouts.layout')
 @section('headerLogo')
-    <div class="logo"><a href="{{ route( 'home' ) }}"><img src="img/logo-burst.png" alt="logo bursty" height="38" width="90"></a></div>
+    <div class="logo"><a href="{{ route( 'homePage' ) }}"><img src="img/logo-burst.png" alt="logo bursty" height="38" width="90"></a></div>
 @endsection
 @section('title')
     HomePage

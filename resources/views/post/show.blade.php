@@ -1,7 +1,7 @@
 @extends ('layouts.layout')
 
 @section('headerLogo')
-    <a href="{{route('home')}}"><div id="logo"><img src="img/logo-burst.svg" alt="logo burstfly" height="38" width="90"></div></a>
+    <a href="{{route('homePage')}}"><div id="logo"><img src="img/logo-burst.svg" alt="logo burstfly" height="38" width="90"></div></a>
 @endsection
 
 @section('title')
@@ -14,6 +14,8 @@
         <meta http-equiv="refresh" content="1; url={{ 'post/download/'.$post->id}}">
     @endif
 @endsection
+
+
 @section ('content')
 
     <div class="container object">
@@ -69,10 +71,10 @@
                                 @csrf
                                 <input id="user" name="user" type="hidden" value="{{Auth::user()->id}}">
                                 <input id="post" name="post" type="hidden" value="{{$post->id}}">
-                                <fieldset>
+
                                     <p><textarea id="body" name="body" maxlength="500" placeholder="Votre Message" tabindex="5" cols="30" rows="4"></textarea></p>
-                                </fieldset>
-                                <div style="text-align:center;"><input type="submit" name="envoi" value="Envoyer" /></div>
+
+                                <div style="text-align:center;"><input type="submit" style=" margin-top:10px;" name="envoi" value="Envoyer" /></div>
                             </form>
                         </div>
                     </div>
@@ -81,11 +83,8 @@
                 @guest
                     <div class="post-send">
                         <div id="main-post-send">
-                            <div id="title-post-send">Pour mettre un comment il faut se logger</div>
-                            <form id="login" method="get" action="{{ route('login') }}">
-                                @csrf
-                                <input type="submit" name="envoi" value="Se logger" />
-                            </form>
+                            <div id="title-post-send">Pour mettre un comment il faut <a href="{{ route('login') }}" style="color:#007bff;">se logger</a>
+                            </div>
                         </div>
                     </div>
                 @endguest

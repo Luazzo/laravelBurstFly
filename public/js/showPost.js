@@ -115,13 +115,13 @@ $(document).on('touchend mouseout', '#cross-menu', function(event){
         }
 });
 
-/* MENU SIDE CLOSE */
+/* MENU SIDE CLOSE
 
 var MENUSIDECLOSE = document.getElementById('cross-menu');
 
 MENUSIDECLOSE.addEventListener('click', function() {
 			   $("#main-container-menu").stop().animate({'left':'-100%'},300);
-});
+});*/
 
 /* BOUTON MENU ARROW-2 */
 

@@ -15,17 +15,19 @@
                 },
                 method: 'get',
                 success: function(user) {
-                    console.log(user);
+                    //console.log(user);
 
                     $('.post-reply').removeClass('post-reply').addClass('post-reply-2');
+                    var base = window.location.origin;
 
                     $html = "<div class=\"post-reply\">\n" +
-                            "    <div class=\"image-reply-post\"></div>\n" +
+                            "    <div class=\"image-reply-post\" style=\"background: url("+base+"/storage/"+user['avatar']+") no-repeat; background-size: 100%; \"></div>\n" +
                             "    <div class=\"name-reply-post\">"+user['name']+"</div>\n" +
                             "    <div class=\"text-reply-post\">"+$('#body').val()+"</div>\n" +
                             "</div>";
 
                     $('.white').after($html);
+                    $('#body').val("");
 
                 },
                 error: function (jqXHR, exception) {

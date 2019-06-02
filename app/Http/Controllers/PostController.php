@@ -200,6 +200,6 @@
             $size = filesize('storage/'.$post->image); // Storage::size($path) ne fonctionne pas
             //convertie size en valeur plus comprehensible
             $sizeImg = self::human_filesize($size, $decimals = 2);
-            return view('post.show', compact('post', 'sizeImg'));
+            return redirect('post/'.$post->slug);
         }
 	}

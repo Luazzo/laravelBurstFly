@@ -83,7 +83,7 @@
                 @guest
                     <div class="post-send">
                         <div id="main-post-send">
-                            <div id="title-post-send">Pour mettre un comment il faut <a href="{{ route('login') }}" style="color:#74BDEC">se logger</a>
+                            <div id="title-post-send">Pour mettre un comment il faut <a href="{{ route('login') }}" style="color:#007bff;">se logger</a>
                             </div>
                         </div>
                     </div>

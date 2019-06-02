@@ -12,7 +12,8 @@ Route::group(['middleware' => 'web'], function() {
     | contains the "web" middleware group. Now create something great!
     */
 //ajaxComment
-    Route::get('ajax/comment', 'CommentController@addComment')->name('ajax.insertComment');
+    Route::get('ajax/comment', 'CommentController@addComment')->name('ajax.insertComment');//ajaxComment
+    Route::get('ajax/post/{slug}', 'PostController@show')->name('ajax.postDetail');
 //index
     Route::get('home', 'PostController@index')->name('home');
     Route::get('/', 'PostController@index')->name('homePage');
@@ -34,7 +35,6 @@ Route::group(['middleware' => 'web'], function() {
 //Routes d'Authintification
     Auth::routes();
     Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
-    Route::get('register', 'Auth\RegisterController@create')->name('register');
     //profile
     Route::get('profile/{id}', 'ProfileController@show')->name('profile')->middleware('auth');;
     Route::post('profile/edit', 'ProfileController@edit')->name('profile.edit')->middleware('auth');;
@@ -42,3 +42,6 @@ Route::group(['middleware' => 'web'], function() {
 //Route::get('/logout', 'Auth\LoginController@logout')->name('logout');
 
 });
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

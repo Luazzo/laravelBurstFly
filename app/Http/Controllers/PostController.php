@@ -6,6 +6,7 @@
     use App\Post;
     use Illuminate\Http\Request;
     use Illuminate\Support\Facades\Auth;
+    use Illuminate\Support\Facades\DB;
     use Illuminate\Support\Facades\Input;
     use Illuminate\Support\Facades\Redirect;
     use Illuminate\Support\Facades\Session;
@@ -183,5 +184,15 @@
         public function showWithDownload(){
             Session::flash('download', 'true');
             return back();
+        }
+        public function search(Request $request){
+            $key=Input::get('search');
+            $post= Post::where('title', 'LIKE','%'.$key.'%')
+                ->first();
+            //retourne size de file
+            $size = filesize('storage/'.$post->image); // Storage::size($path) ne fonctionne pas
+            //convertie size en valeur plus comprehensible
+            $sizeImg = self::human_filesize($size, $decimals = 2);
+            return view('post.show', compact('post', 'sizeImg'));
         }
 	}

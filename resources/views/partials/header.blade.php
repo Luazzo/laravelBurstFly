@@ -13,9 +13,11 @@ $categories = CategoryController::index();
 
         @yield('headerLogo')
 
-        <div id="main_tip_search">
-            <form>
+        <div id="main_tip_search"  style="display: inline;">
+            <form method="post" action="{{route('post.search')}}">
+                @csrf
                 <input type="text" name="search" id="tip_search_input" list="search" autocomplete=off required>
+                <input type="submit" value="go" name="submit">
             </form>
         </div>
         <div id="stripes"></div>
@@ -26,7 +28,7 @@ $categories = CategoryController::index();
 <div id="wrapper-navbar">
     <div class="navbar object">
 
-        <div id="wrapper-bouton-icon">
+        <div id="wrapper-bouton-icon" style="display: inline;">
 
 
             @foreach($categories as $category)
@@ -39,12 +41,27 @@ $categories = CategoryController::index();
 
             @endforeach
             @guest
+                    <div id="bouton-ai">
+                        <a href="{{ route('register')}}">
+                            <img src="{{ asset('img/register.png') }}" alt="user-profile" title="user-profile" height="28" width="28">
+                        </a>
+                    </div>
+                    <div id="bouton-ai">
+                        <a href="{{ route('login')}}">
+                            <img src="{{ asset('img/login.png') }}" alt="user-profile" title="user-profile" height="28" width="28">
+                        </a>
+                    </div>
             @else
                 <div id="bouton-ai">
                     <a href="{{ route('profile', auth()->id()) }}">
                         <img src="{{ asset('img/profile.png') }}" alt="user-profile" title="user-profile" height="28" width="28">
                     </a>
                 </div>
+                <div id="bouton-ai">
+                    <a href="{{ route('logout')}}">
+                        <img src="{{ asset('img/logout.png') }}" alt="user-profile" title="user-profile" height="28" width="28">
+                    </a>
+                </div id="bouton-ai">
             @endguest
         </div>
     </div>

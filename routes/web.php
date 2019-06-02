@@ -18,6 +18,7 @@ Route::group(['middleware' => 'web'], function() {
     Route::get('home', 'PostController@index')->name('home');
     Route::get('/', 'PostController@index')->name('homePage');
 //posts
+    Route::post('search/post', 'PostController@search')->name('post.search');
     Route::get('create/post', 'PostController@create')->name('post.create')->middleware('auth');
     Route::get('post/{slug}', 'PostController@show')->name('post.show');
     Route::get('post/edit/{id}', 'PostController@edit')->name('post.edit')->middleware('auth');

@@ -26,7 +26,7 @@ class ProfileController extends Controller
     public function show($id)
     {
         $posts=Post::where('author_id',$id)->paginate(8);
-        return view('profile',compact('posts'));
+        return view('profile.profile',compact('posts'));
     }
 
     /**

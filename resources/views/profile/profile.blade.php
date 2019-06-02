@@ -9,7 +9,6 @@
 @stop
 
 @section('head')
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link href="{{asset('css/style.css')}}" rel='stylesheet' type='text/css'>
 @endsection
 
@@ -17,20 +16,25 @@
     <div class="container">
         <div class="row">
             <section class="col-md-4 p-2">
-                <form method="post" action="{{route('profile.edit')}}" class="form-group" enctype="multipart/form-data">
-                    @csrf
-                    <figure class="white">
-                        <img src="{{ Voyager::image( Auth::user()->avatar ) }}" alt="avatar" style="height: 120px;width:120px ; margin: 50px"/><br/>
-                        <input type="file" name="avatar" class="form-control">
+                <div class="row">
+                    <form method="post" action="{{route('profile.edit')}}" class="form-group" enctype="multipart/form-data">
+                        @csrf
+                        <figure class="white">
+                            <img src="{{ Voyager::image( Auth::user()->avatar ) }}" alt="avatar" style="height: 220px; width:220px; margin: 50px"/><br/>
+                        </figure>
+
+                        <input type="file" name="avatar" style="box-sizing: border-box;" class="form-control">
                         <label>Email :</label>
-                        <input type="email" name="email" placeholder="{{auth::user()->email}}" class="form-control">
+                        <input type="email" name="email" style="box-sizing: border-box;" placeholder="{{auth::user()->email}}" class="form-control">
                         <label>name :</label>
-                        <input type="text" name="name" placeholder="{{auth::user()->name}}" class="form-control"><br/>
-                        <input type="submit" value="modifier" class="btn btn-primary">
+                        <input type="text" name="name" style="box-sizing: border-box;" placeholder="{{auth::user()->name}}" class="form-control"><br/>
+                        <input type="submit" value="Modifier" class="btn btn-primary">
                         <input type="hidden" value="{{auth::user()->id}} " name="user_id" class="form-control">
-                    </figure>
-                </form>
-                <a class="btn btn-primary" href="{{url('/password/reset')}}">Changer le Mot de pass</a></br>
+                    </form>
+                </div>
+                <div class="row" style="margin-top: 40px; float: right; padding-right: 40px;">
+                    <a class="btn btn-primary" href="{{url('/password/reset')}}">Changer le Mot de pass</a></br>
+                </div>
                 <div>
                     @if ($errors->any())
                         <div class="alert alert-danger">
@@ -44,11 +48,15 @@
                 </div>
             </section>
             <aside class="col-md-8">
-                <div class="wrapper-navbouton">
-                    <a href="{{route('post.create')}}" class="btn btn-primary">creer un post</a>
-                </div>
                     <div id="main-container-image">
                         <section class="work">
+                            <div class="row">
+                            <h1 style="">Vos posts</h1>
+                            <div class="addPost" style="">
+                                <a href="{{route('post.create')}}" class="btn btn-primary">Créer un post</a>
+                            </div>
+
+                            </div>
                             @foreach($posts as $post)
                                 <figure class="white">
                                     <a href="{{route('post.edit',['id'=>$post->id])}}">

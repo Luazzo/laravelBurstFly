@@ -902,7 +902,7 @@ input[type=submit] {
     -webkit-transition: all 0.5s ease-in-out; /** Chrome & Safari **/
     -moz-transition: all 0.5s ease-in-out; /** Firefox **/
     -o-transition: all 0.5s ease-in-out; /** Opera **/
-    background-color:#74BDEC;
+    background-color:#007bff;
     border:none;
 }
 

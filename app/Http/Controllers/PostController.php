@@ -6,7 +6,6 @@
     use App\Post;
     use Illuminate\Http\Request;
     use Illuminate\Support\Facades\Auth;
-    use Illuminate\Support\Facades\DB;
     use Illuminate\Support\Facades\Input;
     use Illuminate\Support\Facades\Redirect;
     use Illuminate\Support\Facades\Session;
@@ -105,6 +104,11 @@
         {
             return view ('post.create');
         }
+
+        /**
+         * @param \Illuminate\Http\Request $request
+         * @return \Illuminate\Http\RedirectResponse
+         */
         public function store(Request $request){
             $ctgr=Category::pluck('id');
             $rules = [

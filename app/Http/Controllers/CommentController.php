@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Comment;
 use App\User;
-use Illuminate\Support\Facades\View;
 
 /**
  * Class CommentController
@@ -14,7 +13,7 @@ use Illuminate\Support\Facades\View;
  */
 class CommentController extends Controller
 {
-	
+
     /**
      * @param \Illuminate\Http\Request $request
      * @return \App\Comment
@@ -28,9 +27,9 @@ class CommentController extends Controller
 	        $comment->user_id = $request->input('user');
 	        $comment->post_id = $request->input('post');
 	        $comment->save();
-	        
+
 	        $user = User::find($comment->user_id);
-	        
+
 	        return $user;
 	    }
 	    catch(\Exception $e){
@@ -38,8 +37,12 @@ class CommentController extends Controller
 			 $e->getMessage();   // insert query
 	    }
     }
-	
-	public static function commentsPost($idPost)
+
+    /**
+     * @param $idPost
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public static function commentsPost($idPost)
 	{ //SELECT * FROM `comments` INNER JOIN `users` ON `comments`.`user_id`=`users`.`id` WHERE `post_id` = 6
         $comments=Comment::where('post_id', $idPost)->get();
 	    return  view('comment._commentsPost',compact('comments'));//view('comment._commentsPost',compact('comments'));

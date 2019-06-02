@@ -12,7 +12,8 @@ Route::group(['middleware' => 'web'], function() {
     | contains the "web" middleware group. Now create something great!
     */
 //ajaxComment
-    Route::get('ajax/comment', 'CommentController@addComment')->name('ajax.insertComment');
+    Route::get('ajax/comment', 'CommentController@addComment')->name('ajax.insertComment');//ajaxComment
+    Route::get('ajax/post/{slug}', 'PostController@show')->name('ajax.postDetail');
 //index
     Route::get('home', 'PostController@index')->name('home');
     Route::get('/', 'PostController@index')->name('homePage');

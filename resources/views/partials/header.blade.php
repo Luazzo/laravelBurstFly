@@ -13,11 +13,11 @@ $categories = CategoryController::index();
 
         @yield('headerLogo')
 
-        <div id="main_tip_search"  style="display: inline;">
+        <div id="main_tip_search">
             <form method="post" action="{{route('post.search')}}">
                 @csrf
                 <input type="text" name="search" id="tip_search_input" list="search" autocomplete=off required>
-                <input type="submit" value="go" name="submit">
+                <input class="btn btn-primary" type="submit" value="Go!" name="submit">
             </form>
         </div>
         <div id="stripes"></div>
@@ -40,69 +40,31 @@ $categories = CategoryController::index();
                 </div>
 
             @endforeach
+
+
             @guest
-                    <div id="bouton-ai">
-                        <a href="{{ route('register')}}">
-                            <img src="{{ asset('img/register.png') }}" alt="user-profile" title="user-profile" height="28" width="28">
-                        </a>
-                    </div>
-                    <div id="bouton-ai">
-                        <a href="{{ route('login')}}">
-                            <img src="{{ asset('img/login.png') }}" alt="user-profile" title="user-profile" height="28" width="28">
-                        </a>
-                    </div>
-            @else
-                <div id="bouton-ai">
-                    <a href="{{ route('profile', auth()->id()) }}">
-                        <img src="{{ asset('img/profile.png') }}" alt="user-profile" title="user-profile" height="28" width="28">
+                <div class="bouton-log">
+                    <a href="{{ route('register')}}">
+                        <img src="{{ asset('img/register.png') }}" alt="register.png" title="Register" height="28" width="28">
                     </a>
                 </div>
-                <div id="bouton-ai">
-                    <a href="{{ route('logout')}}">
-                        <img src="{{ asset('img/logout.png') }}" alt="user-profile" title="user-profile" height="28" width="28">
+                <div class="bouton-log">
+                    <a href="{{ route('login')}}">
+                        <img src="{{ asset('img/login.png') }}" alt="login.png" title="Login" height="28" width="28">
                     </a>
-                </div id="bouton-ai">
+                </div>
+            @else
+                <div class="bouton-log">
+                    <a href="{{ route('profile', auth()->id()) }}">
+                        <img src="{{ asset('img/profile.png') }}" alt="profile.png" title="Profil" height="28" width="28">
+                    </a>
+                </div>
+                <div class="bouton-log">
+                    <a href="{{ route('logout')}}">
+                        <img src="{{ asset('img/logout.png') }}" alt="logout.png" title="Logout" height="28" width="28">
+                    </a>
+                </div>
             @endguest
         </div>
-    </div>
-</div>
-
-<!-- FILTER -->
-
-<div id="main-container-menu" class="object">
-    <div class="container-menu">
-
-        <div id="main-cross">
-            <div id="cross-menu"></div>
-        </div>
-
-        <div id="main-small-logo">
-            <div class="small-logo"></div>
-        </div>
-
-        <div id="main-premium-ressource">
-            <div class="premium-ressource"><a href="#">Premium resources</a></div>
-        </div>
-
-        <div id="main-themes">
-            <div class="themes"><a href="#">Latest themes</a></div>
-        </div>
-
-        <div id="main-psd">
-            <div class="psd"><a href="#">PSD goodies</a></div>
-        </div>
-
-        <div id="main-ai">
-            <div class="ai"><a href="#">Illustrator freebies</a></div>
-        </div>
-
-        <div id="main-font">
-            <div class="font"><a href="#">Free fonts</a></div>
-        </div>
-
-        <div id="main-photo">
-            <div class="photo"><a href="#">Free stock photos</a></div>
-        </div>
-
     </div>
 </div>

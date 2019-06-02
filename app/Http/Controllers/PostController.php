@@ -9,7 +9,8 @@
     use Illuminate\Support\Facades\Input;
     use Illuminate\Support\Facades\Redirect;
     use Illuminate\Support\Facades\Session;
-    use Illuminate\Support\Str;
+	use Illuminate\Support\Facades\Storage;
+	use Illuminate\Support\Str;
 
 
     /**
@@ -25,7 +26,7 @@
 		public static function index()
 		{
 			$posts = Post::join('categories', 'categories.id', '=','posts.category_id')
-							->select('title', 'posts.image', 'posts.slug', 'posts.body', 'categories.image as ctgimage')
+							->select('title', 'posts.image', 'posts.slug', 'posts.body', 'categories.image as ctgimage', 'categories.slug as ctgslug')
 							->paginate(8);
 			return view('post.index', compact('posts'));
 		}
@@ -39,8 +40,10 @@
 		{
 			$posts = Post::where('categories.slug','=', $slug)
 							->join('categories', 'categories.id', '=','posts.category_id')
-							->select('title', 'posts.image', 'posts.slug', 'posts.body', 'categories.image as ctgimage')
+							->select('title', 'posts.image', 'posts.slug', 'posts.body', 'categories.image as ctgimage', 'categories.slug as ctgslug')
 							->paginate(4);
+
+			dd($posts);
 			return view('post.index', compact('posts'));
 		}
 
